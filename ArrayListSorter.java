@@ -17,8 +17,8 @@ public class ArrayListSorter {
      * Sorts a subarray of arr using insertion sort, good for small data sets
      *
      * @param arr the arraylist to be sorted
-     * @param l the left most index of the subarray to be sorted
-     * @param r the right most index of the subarrayarray to be sorted
+     * @param l the left most index of the subarray to be sorted (l is INCLUDED)
+     * @param r the right most index of the subarrayarray to be sorted (r is EXCLUDED)
      * @param <T> anything that extents comparable
      */
     public static <T extends Comparable<? super T>> void insertionsort(ArrayList<T> arr, int l, int r) {
@@ -192,7 +192,6 @@ public class ArrayListSorter {
         for (int i = 0; i < size; i++) {
             arr.add(i);
         }
-
         Collections.shuffle(arr);
 
         return arr;
