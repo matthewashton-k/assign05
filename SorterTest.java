@@ -7,6 +7,12 @@ import java.math.BigInteger;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * tests for the ArrayListSorter class
+ * @author MAtthew Ashton-Knochel
+ * @author Trent Hansen
+ */
 public class SorterTest {
 
     @Test

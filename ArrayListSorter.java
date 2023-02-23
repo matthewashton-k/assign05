@@ -81,7 +81,7 @@ public class ArrayListSorter {
         int tempIndex = l;
 
         while (lIndex < mid && rIndex < r) {
-            // check which is bigger
+            // check which is bigger, then add it to the arr
             if (arr.get(lIndex).compareTo(arr.get(rIndex)) < 0) {
                 tempArr.set(tempIndex++, arr.get(lIndex++));
             } else if (arr.get(rIndex).compareTo(arr.get(lIndex)) < 0) {
@@ -103,6 +103,7 @@ public class ArrayListSorter {
             rIndex++;
         }
 
+        // copy the portion of temp array that we merged back to arr
         for (int i = l; i < r; i++) {
             arr.set(i, tempArr.get(i));
         }
@@ -132,7 +133,10 @@ public class ArrayListSorter {
             return;
         }
         int pivot = partition(arr, l, r);
+
+        // quicksort the left side of the arr
         quicksort(arr, l, pivot);
+        //quicksort the right side of the arr
         quicksort(arr, pivot, r);
 
     }
@@ -147,19 +151,23 @@ public class ArrayListSorter {
      */
     private static <T extends Comparable<? super T>> int partition(ArrayList<T> arr, int l, int r) {
 
-        Random rand = new Random();
+//        Random rand = new Random();
 
-        int pSpot = rand.nextInt(r-l) + l;
-        // int pSpot = (l+r)/2;
-        // int pSpot = r-1;
+//        int pSpot = rand.nextInt(r-l) + l; //different pivot selection
+         int pSpot = (l+r)/2; // different pivot selection
+        // int pSpot = r-1; // different pivot selection
 
+        // get the element at pivot
         T pivot = arr.get(pSpot);
 
+        // starts at the left of the array and is moved forward when an element is less than the pivot
         int spot = l;
 
+        // moves the pivot to the end of the array so that it is moved into place last
         swap(arr, pSpot, r-1);
 
         for (int i = l; i < r; i += 1) {
+            // if arr[i] is less than the pivot
             if (arr.get(i).compareTo(pivot) <= 0) {
                 swap(arr, i, spot);
                 spot++;
